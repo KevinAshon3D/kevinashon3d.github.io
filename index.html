@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>My Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                background: #1F8A70;
+                color: #FFE019;
+                padding: 10px;
+                font-family: 'PT Sans', sans-serif;
+                font-size: 15px;
+            }
+            header {
+                font-size: 1.5em;
+                font-weight: bold;
+                font-family: 'Arvo', serif;
+            }
+            [id=all-contents] {
+                max-width: 800px;
+                margin: auto;
+            }
+
+            /* navigation menu */
+            nav {
+                background: black;
+                margin: 0 auto;
+    
+                display: flex;
+                padding: 10px;
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+                border-top: outset;
+                border-right: outset;
+                border-left: outset;
+                border-color: purple;
+                
+            }
+            nav header {
+                display: flex;
+                align-items: center;
+                color: #BFDB39;
+                flex: 1;
+                padding-left: 10px;
+            }
+            nav ul {
+                list-style-image: none;
+            }
+            nav li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            nav a {
+                text-decoration: none;
+                color: #BFDB39;
+            }
+
+            /* main container area beneath menu */
+            main {
+                background: #00425A;
+                display: flex;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-bottom: outset;
+                border-right: outset;
+                border-left: outset;
+                border-color: purple;
+                padding-right: 20px;
+            }
+            [class=sidebar] {
+                margin-right: 50px;
+                
+            }
+            [class=sidebar] img {
+                height: 300px;
+                width: 300px;
+                border-radius: 5px;
+                margin-top: 25px;
+                margin-left: 25px;
+                
+            
+            }
+            [class=content] {
+                flex: 1;
+                padding: 15px;
+            }
+            [class=interests] header {
+                font-size: 1.25em;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id ="all-contents">
+            <nav>
+                <header>Designed by Kevin Ashon</header>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </nav>
+            
+            <main>
+                <div class = "sidebar">
+                    <img src="http://images.fineartamerica.com/images-medium-large/alien-face-.jpg" alt="Smiley face" align="middle">
+                </div>    
+                
+                <div class = "content">
+                    <p>
+                        <div style = "text-align:center-left;">
+                            <h1>Kevin A. Roberts</h1>
+                            <h3>"Miley, What's good?!"</h3>
+                        </div>
+                        <div style = "text-align:left;">
+                            <h3>Stanford Alumnus @ Operation Spark. <br> "The Copyright Person" at AlternateROOTS</h3>
+                        </div>
+                        <section class="interests">
+                            <h4>Interests</h4>
+                            <ul>
+                                <li>Dance, Design, & Dramaturgy</li>
+                                <li>Front-End Design</li>
+                                <li>Vegetarianism, Environmentalism, Humanitarianism</li>
+                            </ul>
+                        </section>
+                    </p>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
