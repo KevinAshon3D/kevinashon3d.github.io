@@ -14,10 +14,56 @@
                     border: 2px solid #999;
                     border-radius: 10px;
                     background-color: #ddd;
-                    display: inline-block;
+                    float: left;
                     margin: 20px;
                     padding: 10px;
                     color: #333;
+                    text-align: left;
+                    position: relative;
+            }
+            #search{
+                display: none;
+                text-align: center;
+            }
+            #searchResults{
+                text-align: center;
+                padding: 20px;
+                border: 2px solid #666;
+                display: none;
+                margin-top: 10px;
+            }
+            #searchResults .animal{
+                float: none!important;
+                display: inline-block;
+            }
+            .saveBtn{
+                display: none;
+            }
+            input{
+                max-width: 100%;
+            }
+            .remove{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+                background-color: white;
+                width: 20px;
+                height: 20px;
+                text-align: center;
+                border: 2px solid red;
+                border-radius: 10px;
+                font-size: 1em;
+                font-weight: bold;
+                line-height: 15px;
+                color: red;
+            }
+            #create{
+                display: none;
+                width: 300px;
+                padding: 10px;
+                border: 2px solid #444;
+                margin: 20px auto;
             }
         </style>
     </head>
@@ -28,6 +74,18 @@
                 <h2>A social network for Animals</h2>
             </div>
         </div>
+        <div id="search">
+            <input type="text" id="query" placeholder="Animal Name"></input>
+            <button id="searchBtn">Search</button>
+        </div>
+        <div id="create">
+            <h4>Create New Animal</h4><br>
+            <input type="text" id="newNameInp" placeholder="Name"/><br>
+            <input type="text" id="newSpeciesInp" placeholder="Species"/><br>
+            <button id="createBtn">Create</button>
+        </div>
+        <div id="searchResults"><h2>Search Results:</h2><div id="results"></div></div>
+        <div id="profiles"></div>
         <script type="text/javascript" src="part1.js"></script>
         <script type="text/javascript" src="part2.js"></script>
         <script type="text/javascript" src="moreExercises.js"></script>

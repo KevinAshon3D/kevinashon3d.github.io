@@ -1,13 +1,14 @@
 body {
-    background: rgb(125, 198, 205);
-    color: rgb(45, 45, 45);
+    background: #1F8A70;
+    color: #FFE019;
     padding: 10px;
-    font-family: arial;
+    font-family: 'PT Sans', sans-serif;
 }
 
 header {
     font-size: 1.5em;
     font-weight: bold;
+    font-family: 'Arvo', serif;
 }
 
 [id=all-contents] {
@@ -19,17 +20,24 @@ header {
 /* Main navigation menu */
 
 nav {
-    background: rgb(239, 80, 41);
+    background: black;
     margin: 0 auto;
     display: flex;
     padding: 10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top: outset;
+    border-right: outset;
+    border-left: outset;
+    border-color: purple;
 }
 
 nav header {
     display: flex;
     align-items: center;
-    color: rgb(255, 255, 255);
+    color: #BFDB39;
     flex: 1;
+    padding-left: 10px;
 }
 
 nav ul {
@@ -50,9 +58,16 @@ nav a {
 /* Main container area beneath menu */
 
 main {
-    background: rgb(245, 238, 219);
+    background: #00425A;
     display: flex;
     flex-direction: column;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: outset;
+    border-right: outset;
+    border-left: outset;
+    border-color: purple;
+    padding-right: 20px;
 }
 
 [class=sidebar] {
