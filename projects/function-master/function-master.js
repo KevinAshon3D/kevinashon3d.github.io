@@ -106,25 +106,48 @@ function nonFriends(name, people){
     return noNewFriends;
 }
 
+
 function updateObject(data, key, value){
     data[key] = value;
     return data;
 }
 
-function removeProperties(obj, arr){
-    for(var i = 0; i < arr.length; i++){
-        if(obj.hasOwnProperty(arr[i])){
-            delete obj[arr[i]];
+// function removeProperties(obj, arr){
+//     for(var i = 0; i < arr.length; i++){
+//         if(obj.hasOwnProperty(arr[i])){
+//             delete obj[arr[i]];
+//         }
+//     }
+//     return obj;   
+// }
+
+function removeProperties(obj, bad_keys){
+    var keys = Object.keys(obj);
+    var new_obj = {};
+    for (var i = 0; i < keys.length; i++){
+        if(bad_keys.indexOf(keys[i]) === -1){
+            new_obj[keys[i]] = obj[keys[i]];
         }
     }
+    return new_obj;
 }
 
-function dedup(arr){
-    var newArr = [];
-    for(var i = 0; i < arr.length; i++){
-        if(arr[i] !== arr[i + 1]){
-            newArr.push(arr[i]);
-        }
-    }
-    return newArr;
+// function dedup(arr){
+//     var newArr = [];
+//     for(var i = 0; i < arr.length; i++){
+//         if(arr[i] !== arr[i + 1]){
+//             newArr.push(arr[i]);
+//         }
+//     }
+//     return newArr;
+// }
+
+function dedup(array){
+   var new_array = [];
+   for(var i =0; i < array.length; i++){
+       if(new_array.indexOf(array[i]) === -1){
+           new_array.push(array[i]);
+       }
+   }
+   return new_array;
 }

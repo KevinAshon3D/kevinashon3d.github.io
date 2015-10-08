@@ -118,18 +118,15 @@
             });
             
             /* global removeProperties */
-            QUnit.test("removeProperties() : Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>", function(assert){
-                var data = {a: "one", b: "two", "hokey": false};
-                removeProperties(data, ["a","hokey"]);
-                assert.deepEqual(data, {b: "two"});
-                
-                var data = {a: "one", b: "two", "hokey": false};
-                removeProperties(data, ["b"])
-                assert.deepEqual(data, {a: "one", "hokey": false});
-                
-                var data = {a: "one", b: "two", hokey: false};
-                removeProperties(data, []);
-                assert.deepEqual(data, {a: "one", b: "two", "hokey": false});
+            QUnit.test("removeProperties() : Should take an object and an array of strings. Should return an object with all properties on <object> that are not in <array>", function(assert){
+               var data = {a: "one", b: "two", "hokey": false};
+               assert.deepEqual(removeProperties(data, ["a","hokey"]), {b: "two"});
+               
+               var data = {a: "one", b: "two", "hokey": false};
+               assert.deepEqual(removeProperties(data, ["b"]), {a: "one", "hokey": false});
+               
+               var data = {a: "one", b: "two", hokey: false};
+               assert.deepEqual(removeProperties(data, []), {a: "one", b: "two", "hokey": false});
             });
             
             /* global dedup */

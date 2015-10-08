@@ -33,6 +33,10 @@
       it('Should return just the array\'s elements if the length argument is greater than the array\'s length', function() {
         expect(_.first([1,2,3], 5)).to.eql([1, 2, 3]);
       });
+      
+      it('Should accept a negative length argument and return empty array', function (){
+        expect(_.first([1,2,3], -2)).to.eql([]);
+      });
     });
 
     describe('_.last()', function() {

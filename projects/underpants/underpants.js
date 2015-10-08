@@ -43,7 +43,34 @@
    *   _.first(["a","b","c"], 2) -> ["a", "b"]
    *   _.first(["a", "b", "c"], "ponies") -> ["a","b","c"]
    */
-
+   
+  // _.first = function(array, length){
+  //   var newArray = [];
+  //   if (!Array.isArray(array) || length === 0 || length < 0){
+  //       return newArray;
+  //   } else if (isNaN(length)){
+  //       return array[0];
+  //   } else if (length > array.length){
+  //     for (var i = 0; i < array.length; i++){
+  //       newArray.push(array[i]);
+  //     }
+  //   } else {
+  //       for (var i = 0; i < length; i++){
+  //       newArray.push(array[i]);
+  //       } 
+  //   }
+  //   return newArray;
+  // }
+  
+  _.first = function(arr, len){
+    if(len === 0 || len < 0 || !Array.isArray(arr)){
+      return [];
+    }
+    if(!len || len === undefined){
+      return arr[0];
+    }
+    return arr.slice(0, len);
+    }
 
   /** _.last()
    * Arguments:
@@ -60,8 +87,38 @@
    *   _.last(["a","b","c"], 2) -> ["b","c"]
    *   _.last(["a", "b", "c"], "ponies") -> ["a","b","c"]
    */
+   
+  // _.last = function(array, length){
+  //   var newArray = [];
+  //   if (!Array.isArray(array) || length === 0){
+  //       return newArray;
+  //   } else if (isNaN(length) || length <= 0){
+  //       return array[array.length - 1];
+  //   } else if (length > array.length){
+  //     for (var i = 0; i < array.length; i++){
+  //       newArray.push(array[i]);
+  //     }
+  //   } else {
+  //       for (var i = (array.length - length); i < array.length; i++){
+  //       newArray.push(array[i]);
+  //       } 
+  //   }
+  //   return newArray;
+  // }
 
-
+  _.last = function (arr, len){
+    if (len <= 0){
+      return [];
+    } else if (!len){
+      return arr[arr.length - 1];
+    }
+    
+    if (len > arr.length){
+      len = arr.length;
+    }
+    return arr.slice(-len);
+  }
+  
   /** _.each()
    * Arguments:
    *   1) A collection
@@ -80,14 +137,26 @@
    *   _.each(["a","b","c"], function(e,i,a){ console.log(e}); 
    *      -> should log "a" "b" "c" to the console
    */
-
+   
+  _.each = function(coll, func){
+    if(Array.isArray(coll)){
+      for(var i = 0; i < coll.length; i++){
+        func(coll[i], i, coll);
+      }
+    } else if (typeof coll === "object"){
+      for(var key in coll){
+        func(coll[key], key, coll);
+      }
+    }
+      
+  }
 
   /** _.indexOf()
    * Arguments:
    *   1) An array
    *   2) A value
    * Objectives:
-   *   1) Return the index of <array> that is the first occurrance of <value>
+   *   1) Return the index of <array> that is the first occurrence of <value>
    *   2) Return -1 if <value> is not in <array>
    *   3) Do not use [].indexOf()!
    * Gotchas:
@@ -97,7 +166,16 @@
    *   _.indexOf(["a","b","c"], "c") -> 2
    *   _.indexOf(["a","b","c"], "d") -> -1
    */
-
+  _.indexOf = function (arr, val){
+    var indy = -1;
+    for (var i = 0; i < arr.length; i++){
+      if(arr[i] === val){ 
+        indy = i;
+        break;
+        }
+      }
+    return indy;
+  }
 
   /** _.filter()
    * Arguments:
@@ -113,7 +191,15 @@
    * Examples:
    *   _.filter([1,2,3,4,5], function(x){return x%2 === 0}) -> [2,4]
    */
-
+  _.filter = function(arr, func){
+    var newArray = [];
+    for(var i = 0; i < arr.length;  i++){
+      if(func(arr[i], i, arr)){
+        newArray.push(arr[i]);
+      }
+    }
+    return newArray;
+  }
 
   /** _reject()
    * Arguments:
@@ -131,8 +217,31 @@
    * Extra Credit:
    *   Use _.filter in your implementation (this is actually pretty easy)
    */
+   
+  // _.reject = function(arr, func){
+  //   var negater = function(value){
+  //     return !func(value);
+  //   }
+  //   return _.filter(arr, negater);
+  // }
+  
+  // _.reject = function(arr, func){
+  //   var newArray = [];
+  //     for(var i = 0; i < arr.length;  i++){
+  //       if(!func(arr[i], i, arr[i])){
+  //       newArray.push(arr[i]);
+  //       }
+  //     }
+  //   return newArray;
+  // }
+  
 
-
+  _.reject = function(arr, func){
+    return _.filter(arr, function(value){
+      return !func(value);
+    })
+  }
+  
   /** _.unique()
    * Arguments:
    *   1) An array
@@ -141,7 +250,16 @@
    * Examples:
    *   _.uniq([1,2,2,4,5,5,2]) -> [1,2,4,5]
    */
-
+  _.uniq = function(arr){
+      var newArray = [];
+      for(var i = 0; i < arr.length; i++){
+          if(_.indexOf(newArray, arr[i]) === -1){
+            //passing in newArray to see if last pushed is already in newArray
+            newArray.push(arr[i]);
+          }      
+      }
+      return newArray;
+  }
 
   /** _.map()
    * Arguments:
@@ -158,7 +276,14 @@
    * Examples:
    *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
    */
-
+   
+  _.map = function(arr, func){
+    var newArray = [];
+    for (var i = 0; i < arr.length; i++){
+      newArray.push(func(arr[i]));
+    }
+    return newArray;
+  }
 
   /** _.pluck()
    * Arguments:
@@ -175,7 +300,21 @@
    * Bonus:
    *   Use _.map in your implementation
    */
-
+   
+  // _.pluck = function(arr, prop){
+  //   var newArray = [];
+  //   for (var i = 0; i < arr.length; i++){
+  //     newArray.push(arr[i][prop]);
+  //     }
+  //   return newArray;
+  // }
+   
+   _.pluck = function(arr, prop){
+     var mapper = function(element){
+       return element[prop];
+     }
+     return _.map(arr, mapper);
+  }
 
   /** _.reduce()
    * Arguments:
@@ -198,6 +337,20 @@
    *   _.reduce([1,2,3], function(prev, curr){ return prev + curr}) -> 6
    */
 
+  _.reduce = function(coll, func, seed){
+     var i = 0;
+     if(seed === undefined){
+        seed = coll[0];
+        i = 1;
+     }
+    if (Array.isArray(coll)){
+      for (var i; i < coll.length;){
+        var prevRes = func(seed, coll[i++], i);
+        seed = prevRes;
+      }
+    }
+    return seed;
+  }  
 
   /** _.contains()
    * Arguments:
@@ -213,7 +366,15 @@
    * Examples:
    *   _.contains([1,"two", 3.14], "two") -> true
    */
-
+_.contains = function(arr, val){
+  var valCheck = false;
+    for (var i = 0; i < arr.length; i++){
+      if(arr[i] === val){
+         valCheck = true;
+      }
+    }
+    return valCheck;
+  } 
 
   /** _.every()
    * Arguments:
@@ -233,7 +394,19 @@
    *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
    *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
    */
-   
+  _.every = function(coll, func){
+    if(!func){
+      func = _.identity;
+    }
+    if(Array.isArray(coll)){
+      for(var i = 0; i < coll.length; i++){
+         if(!func(coll[i], i, coll)){
+           return false;
+         };
+        }
+    }
+    return true;
+  }
    
   /** _.some()
    * Arguments:
@@ -253,7 +426,42 @@
    *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
    *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
    */
+  _.some = function(coll, func){
+    if(!func){
+      func = _.identity;
+    }
+    if(Array.isArray(coll)){
+      for(var i = 0; i < coll.length; i++){
+         if(func(coll[i], i, coll)){
+           return true;
+         };
+        }
+    }
+    return false;
+  }
 
-
+  /** _.extend()
+  * Arguments:
+  *   1) An Object
+  *   2) An Object
+  *   ...Possibly more objects
+  * Objectives:
+  *   1) Copy properties from <object 2> to <object 1>
+  *   2) If more objects are passed in, copy their properties to <object 1> as well, in the order they are passed in.
+  *   3) Return the update <object 1>
+  * Examples:
+  *   var data = {a:"one"};
+  *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
+  *   _.extend(data, {a:"two"}); -> data now equals {a:"one"}
+  */
+  _.extend = function (obj1, obj2){
+    for (var prop in obj2){
+      if(obj1.key !== prop){
+        obj1[prop] = obj2[prop];
+      }
+    }
+    return obj1;
+  }
+  
 // This is the proper way to end a javascript library
 }());
