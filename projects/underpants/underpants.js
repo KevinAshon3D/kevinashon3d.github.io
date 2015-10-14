@@ -454,13 +454,13 @@ _.contains = function(arr, val){
   *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
   *   _.extend(data, {a:"two"}); -> data now equals {a:"one"}
   */
-  _.extend = function (obj1, obj2){
-    for (var prop in obj2){
-      if(obj1.key !== prop){
-        obj1[prop] = obj2[prop];
+  _.extend = function (){
+    for (var i = 1; i < arguments.length; i++){
+      for (var prop in arguments[i]){
+        arguments[0][prop] = arguments[i][prop];
       }
     }
-    return obj1;
+    return arguments[0];
   }
   
 // This is the proper way to end a javascript library

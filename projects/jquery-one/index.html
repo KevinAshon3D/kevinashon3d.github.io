@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>jQuery One</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <section>
+      <ul>
+        <li>You will code in this index.html file, save and refresh to see the results of your work.</li>
+        <li><a href="directions.html" target="_blank">Directions...</a></li>
+      </ul>
+    </section>
+   <body>
+    <div id="everything">
+        <h1>A heading!</h1>
+        <p id="target">Here's some text!</p>
+        <p>Here's a second set of text!</p>
+        <div class="holder">
+            <ul>
+                <li>List Item 1</li>
+                <li id="listItem2">List Item 2</li>
+                <li>List Item 3</li>
+            </ul>
+        </div>
+        <div class="holder">
+            <ul>
+                <li>List Item 4</li>
+                <li>List Item 5</li>
+                <li>List Item 6</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+    $(".container").prepend("<div>hello</div>");
+    $(".container").append("<div>goodbye</div>");
+    $("body").prepend("<div>Body prepend</div>");
+    $("body").append("<div>Body append</div>");
+    $("div.holder:nth-child(2)").insertAfter('<div id="last">some text</div>');
+    </script>
+    </body>
+  </div>
+</body>
+
+</html>
